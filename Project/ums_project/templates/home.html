@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UMS - Home</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0f0f0f; /* Majority Black */
+            color: #ffffff;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background-color: #0a1f44; /* Navy Blue */
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h2 {
+            margin: 0;
+            color: #90ee90; /* Light Green */
+            letter-spacing: 1px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .login-btn {
+            background-color: #f4c430; /* Yellow */
+            color: #000;
+        }
+
+        .register-btn {
+            background-color: #ff6f00; /* Orange */
+            color: #fff;
+        }
+
+        .navbar a:hover {
+            opacity: 0.85;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 120px 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: #90ee90; /* Light Green */
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #cccccc;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        /* FEATURES SECTION */
+        .features {
+            background-color: #111827; /* Dark Navy */
+            padding: 60px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .feature-box {
+            background-color: #1f2937;
+            padding: 30px;
+            width: 280px;
+            border-radius: 10px;
+            margin: 15px;
+            text-align: center;
+            border-top: 4px solid #ff6f00; /* Orange accent */
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-8px);
+            border-top: 4px solid #f4c430; /* Yellow on hover */
+        }
+
+        .feature-box h3 {
+            color: #90ee90;
+            margin-bottom: 15px;
+        }
+
+        .feature-box p {
+            color: #cccccc;
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: #0a1f44;
+            text-align: center;
+            padding: 20px;
+            color: #cccccc;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <h2>UMS Portal</h2>
+        <div>
+            <a href="{% url 'login' %}" class="login-btn">Login</a>
+            <a href="{% url 'register' %}" class="register-btn">Register</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1>University Management System</h1>
+        <p>
+            A centralized platform designed to manage student records, attendance,
+            academic performance, course management, and communication efficiently.
+            Built for seamless interaction between students and faculty.
+        </p>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features">
+
+        <div class="feature-box">
+            <h3>Student Dashboard</h3>
+            <p>View semester details, courses, attendance percentage, CGPA, and timetable.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>Teacher Controls</h3>
+            <p>Manage courses, mark attendance, upload CGPA, and send announcements.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>Real-Time Updates</h3>
+            <p>Instant access to academic progress and important university messages.</p>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        © 2026 University Management System | Designed for Academic Excellence
+    </div>
+
+</body>
+</html>

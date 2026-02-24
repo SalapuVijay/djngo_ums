@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <h2>Manage Courses</h2>
+    
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags | default:'success' }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <a href="{% url 'add_course' %}" class="btn btn-primary" style="width: auto; display: inline-block;">Add New Course</a>
+
+    {% if courses %}
+    <table>
+        <thead>
+            <tr>
+                <th>Course Name</th>
+                <th>Semester</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+            <tr>
+                <td>{{ course.name }}</td>
+                <td>Semester {{ course.semester }}</td>
+                <td>
+                    <a href="{% url 'edit_course' course.id %}" style="color: #00f5d4; text-decoration: none;">Edit</a>
+                    |
+                    <a href="{% url 'delete_course' course.id %}" style="color: #ff6b6b; text-decoration: none;" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-info">
+        <p>No courses available. <a href="{% url 'add_course' %}">Click here to add a course.</a></p>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

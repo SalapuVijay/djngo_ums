@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UMS Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            background: #0a1f44;
+            padding-top: 30px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            color: #90ee90;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 25px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #ff6f00;
+            color: white;
+        }
+
+        /* CONTENT */
+        .content {
+            margin-left: 250px;
+            padding: 30px;
+        }
+
+        h1, h2, h3 {
+            color: #90ee90;
+        }
+
+        /* CARDS */
+        .card {
+            background: #1f2937;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ff6f00;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .card:hover {
+            border-left: 5px solid #f4c430;
+            transform: translateY(-5px);
+            transition: 0.3s;
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #1f2937;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #0a1f44;
+            color: #90ee90;
+            padding: 12px;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+            color: #ffffff;
+        }
+
+        /* FORMS */
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #555;
+            background: #1f2937;
+            color: #ffffff;
+        }
+
+        input:focus, select:focus {
+            border-color: #90ee90;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #ff6f00;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #f4c430;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>UMS</h2>
+
+    {% if user.user_type == "student" %}
+        <a href="{% url 'student_dashboard' %}">Dashboard</a>
+    {% endif %}
+
+    {% if user.user_type == "teacher" %}
+        <a href="{% url 'teacher_dashboard' %}">Dashboard</a>
+        <a href="{% url 'manage_courses' %}">Manage Courses</a>
+        <a href="{% url 'mark_attendance' %}">Mark Attendance</a>
+        <a href="{% url 'upload_cgpa' %}">Upload CGPA</a>
+        <a href="{% url 'send_message' %}">Send Message</a>
+        <a href="{% url 'add_timetable' %}">Add Timetable</a>
+    {% endif %}
+
+    <a href="{% url 'logout' %}">Logout</a>
+</div>
+
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

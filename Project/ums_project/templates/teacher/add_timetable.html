@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <h2>Schedule Timetable</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Course:</label>
+        <select name="course">
+            {% for c in courses %}
+            <option value="{{ c.id }}">{{ c.name }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Day:</label>
+        <select name="day">
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+        </select>
+
+        <label>Start Time:</label>
+        <input type="time" name="start_time">
+
+        <label>End Time:</label>
+        <input type="time" name="end_time">
+
+        <label>Room:</label>
+        <input type="text" name="room">
+
+        <button type="submit">Add</button>
+    </form>
+</div>
+
+{% endblock %}

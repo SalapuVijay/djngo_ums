@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <h2>Mark Attendance</h2>
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Student:</label>
+        <select name="student">
+            {% for s in students %}
+            <option value="{{ s.id }}">{{ s.username }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Course:</label>
+        <select name="course">
+            {% for c in courses %}
+            <option value="{{ c.id }}">{{ c.name }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Present?</label>
+        <select name="present">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

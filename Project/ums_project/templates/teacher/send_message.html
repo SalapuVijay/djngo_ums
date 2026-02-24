@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <h2>Send Message</h2>
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Student:</label>
+        <select name="student">
+            {% for s in students %}
+            <option value="{{ s.id }}">{{ s.username }}</option>
+            {% endfor %}
+        </select>
+
+        <textarea name="content" placeholder="Enter message"></textarea>
+
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+{% endblock %}
